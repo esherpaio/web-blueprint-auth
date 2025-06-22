@@ -1,10 +1,11 @@
 from flask import render_template
-from web.app.blueprint.auth_v1 import auth_v1_bp
 from web.app.data_layer import ByClass, Events, EventSignUp, On
 
+from web_bp_auth import auth_bp
 
-@auth_v1_bp.get("/register")
-@auth_v1_bp.get("/<string:_locale>/register")
+
+@auth_bp.get("/register")
+@auth_bp.get("/<string:_locale>/register")
 def register(_locale: str) -> str:
     events = Events(EventSignUp(ByClass(On.SUBMIT)))
     return render_template("auth/register.html", events=events)
