@@ -61,22 +61,26 @@ async function registerUser() {
     event.preventDefault();
     const buttonId = 'button-register-user';
     updateButton(buttonId, 1);
-    let resp = await postUsers({
+    let post_user = await postUsers({
         email: document.getElementById('register-email').value,
         password: document.getElementById('register-password').value,
         password_eval: document.getElementById('register-password-eval').value,
     }, true);
-    let message = resp.message;
-    if (resp.code == 409) {
-        resp = await getUsers({
-            email: document.getElementById('register-email').value
-        })
-        let user = resp.data.length > 0 ? resp.data[0] : null;
-        if (user !== null && !user.is_active) {
-            resp = await postUsersIdActivation(user.id);
-            message = resp.message;
-        }
+    let message = post_user.message;
+
+    let user;
+    if (post_user.code == 200) {
+        user = post_user.data;
+    } else if (post_user.code == 409) {
+        let get_user = await getUsers({ email: document.getElementById('register-email').value });
+        user = get_user.data.length > 0 ? get_user.data[0] : null;
     }
+
+    if (user !== null && !user.is_active) {
+        let post_activation = await postUsersIdActivation(user.id);
+        message = post_activation.message;
+    }
+
     showMessage(message);
     updateButton(buttonId, -1);
 }
