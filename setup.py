@@ -26,5 +26,5 @@ setup(
     install_requires=find_requirements(),
     include_package_data=True,
     package_data={"": DATA},
-    packages=find_packages(include=["web_bp_auth", "web_bp_auth.*"]),
+    packages=find_packages(include=["bp_auth", "bp_auth.*"]),
 )
