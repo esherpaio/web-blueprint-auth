@@ -1,6 +1,6 @@
-{% extends 'auth.html' %}
+{% extends '_templates/main.html' %}
 
-{% block auth %}
+{% block auth_body %}
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <a href="{{ url_for(config.ENDPOINT_HOME) }}">
         <img alt=""
@@ -50,4 +50,4 @@
         <span class="mx-2">•</span>
         <a class="small" href="{{ url_for('auth.password_request') }}">Forgot your password?</a>
     </div>
-{% endblock auth %}
+{% endblock auth_body %}
