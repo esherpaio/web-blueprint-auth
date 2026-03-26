@@ -1,4 +1,7 @@
 function hideModals() {
+    if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+    }
     const elements = document.getElementsByClassName("modal");
     for (const element of elements) {
         const modal = bootstrap.Modal.getInstance(element);
