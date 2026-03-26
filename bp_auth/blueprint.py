@@ -20,7 +20,7 @@ auth_bp = Blueprint(
 auth_static_jobs = [
     StaticJob(
         type_=StaticType.JS,
-        bundles=[JsBundle(os.path.join(_dir, "static", "auth.js"))],
+        bundles=[JsBundle(os.path.join(_dir, "static"))],
         model=AppBlueprint,
         endpoint="auth",
     ),

@@ -1,10 +1,11 @@
-from ._bp import auth_bp, auth_static_jobs
-from .routes import login, password, register
+from .blueprint import auth_bp, auth_static_jobs
+from .routes import login, password_recover, password_request, register
 
 __all__ = [
     "auth_bp",
     "auth_static_jobs",
     "login",
-    "password",
+    "password_recover",
+    "password_request",
     "register",
 ]
