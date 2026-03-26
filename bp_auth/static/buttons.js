@@ -4,7 +4,7 @@ async function initButtons() {
         button.dataset.loading = "0";
         let spinner = document.createElement("span");
         spinner.classList.add("d-none", "spinner-grow", "spinner-grow-sm", "ms-2");
-        spinner.setAttribute("role", "status");
+        spinner.setAttribute("role", "presentation");
         button.appendChild(spinner);
     }
 }
@@ -29,9 +29,11 @@ function updateButton(buttonId, value, override) {
 
     if (newCount > 0) {
         button.classList.add("disabled");
+        button.setAttribute("aria-busy", "true");
         if (spinner.classList.contains("d-none")) spinner.classList.remove("d-none");
     } else {
         button.classList.remove("disabled");
+        button.removeAttribute("aria-busy");
         if (!spinner.classList.contains("d-none")) spinner.classList.add("d-none");
     }
 }
