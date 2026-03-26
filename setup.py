@@ -7,6 +7,7 @@ DATA = [
     "static/*.js",
     "templates/_templates/*.html",
     "templates/*.html",
+    "templates/auth/*.html",
 ]
 
 
