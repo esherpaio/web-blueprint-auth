@@ -1,7 +1,7 @@
-{% extends 'auth.html' %}
+{% extends 'auth/_templates/main.html' %}
 
-{% block auth %}
-    <a href="{{ url_for(config.ENDPOINT_HOME) }}">
+{% block auth_body %}
+    <a href="{{ url_for(config.ENDPOINT_HOME) }}" aria-label="Home">
         <img alt=""
              class="mb-4 img-contain"
              src="{{ config.META_LOGO_URL }}?height=120&width=240"
@@ -12,7 +12,7 @@
     <div style="width: 320px">
         <form id="form-register"
               class="w-100 event-sign_up"
-              onsubmit="registerUser();">
+              onsubmit="registerUser(event)">
             <div class="form-floating mb-2">
                 <input required
                        id="register-email"
@@ -46,4 +46,4 @@
         </form>
     </div>
     <a class="mt-4 small" href="{{ url_for(config.ENDPOINT_LOGIN) }}">Already have an account?</a>
-{% endblock auth %}
+{% endblock auth_body %}

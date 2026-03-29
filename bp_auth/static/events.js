@@ -1,4 +1,6 @@
-/* verification key */
+//
+// User verification
+//
 
 async function checkParams() {
     const params = new URLSearchParams(window.location.search);
@@ -29,9 +31,11 @@ async function verifyUser(verificationKey) {
 let verificationKey;
 window.addEventListener("load", checkParams);
 
-/* login */
+//
+// Login
+//
 
-async function loginUser() {
+async function loginUser(event) {
     event.preventDefault();
     const buttonId = 'button-login-user';
     updateButton(buttonId, 1);
@@ -40,7 +44,7 @@ async function loginUser() {
         password: document.getElementById('login-password').value,
         remember: true,
     });
-    window.location.href = URL_USER_LOGIN;
+    window.location.href = "/auth";
 }
 
 async function loginUserGoogle(resp) {
@@ -50,14 +54,16 @@ async function loginUserGoogle(resp) {
         await postSessionsGoogle({
             token_id: resp.credential
         });
-        window.location.href = URL_USER_LOGIN;
+        window.location.href = "/auth";
     }
     updateButton(buttonId, -1);
 }
 
-/* register */
+//
+// Registration
+//
 
-async function registerUser() {
+async function registerUser(event) {
     event.preventDefault();
     const buttonId = 'button-register-user';
     updateButton(buttonId, 1);
@@ -85,9 +91,11 @@ async function registerUser() {
     updateButton(buttonId, -1);
 }
 
-/* password */
+//
+// Password
+//
 
-async function requestPassword() {
+async function requestPassword(event) {
     event.preventDefault();
     const buttonId = 'button-request-password';
     updateButton(buttonId, 1);
@@ -102,7 +110,7 @@ async function requestPassword() {
     updateButton(buttonId, -1);
 }
 
-async function recoverPassword() {
+async function recoverPassword(event) {
     event.preventDefault();
     const buttonId = 'button-recover-password';
     updateButton(buttonId, 1);
