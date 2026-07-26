@@ -17,7 +17,8 @@ async function checkParams() {
 
 async function verifyUser(verificationKey) {
     let resp = await getVerifications({
-        key: verificationKey
+        key: verificationKey,
+        type: "verification"
     });
     if (resp && resp.data.length > 0) {
         let verification = resp.data[0];
@@ -115,7 +116,8 @@ async function recoverPassword(event) {
     const buttonId = 'button-recover-password';
     updateButton(buttonId, 1);
     let resp = await getVerifications({
-        key: verificationKey
+        key: verificationKey,
+        type: "password"
     });
     if (resp && resp.data.length > 0) {
         let verification = resp.data[0];
