@@ -1,10 +1,7 @@
 async function callApi(method, url, data = null, contentType = null, silent = false) {
     if (data && method === "GET") {
-        let url_params = "?";
-        for (const [key, value] of Object.entries(data)) {
-            url_params += `${key}=${value}`;
-        }
-        url = `${url}${url_params}`;
+        const url_params = new URLSearchParams(data);
+        url = `${url}?${url_params}`;
         data = null;
     } else if (data && contentType === "application/json") {
         data = JSON.stringify(data);
