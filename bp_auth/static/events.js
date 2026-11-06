@@ -45,7 +45,7 @@ async function loginUser(event) {
         password: document.getElementById('login-password').value,
         remember: true,
     });
-    window.location.href = "/auth";
+    window.location.href = getNextPath() || "/auth";
 }
 
 async function loginUserGoogle(resp) {
@@ -55,7 +55,7 @@ async function loginUserGoogle(resp) {
         await postSessionsGoogle({
             token_id: resp.credential
         });
-        window.location.href = "/auth";
+        window.location.href = getNextPath() || "/auth";
     }
     updateButton(buttonId, -1);
 }
