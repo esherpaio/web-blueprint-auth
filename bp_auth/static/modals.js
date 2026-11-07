@@ -14,12 +14,6 @@ function hideModals() {
     }
 }
 
-function showModal(id_) {
-    hideModals();
-    const modal = new bootstrap.Modal(document.getElementById(id_));
-    modal.show();
-}
-
 function showMessage(message) {
     hideModals();
     let modalBody = document.querySelector("#modal-message .modal-body p");

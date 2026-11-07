@@ -9,12 +9,6 @@ function removeParameter(key) {
     window.history.replaceState(null, null, url);
 }
 
-function setParameter(key, value) {
-    let url = new URL(window.location.href);
-    url.searchParams.set(key, value);
-    window.history.replaceState(null, null, url);
-}
-
 function getNextPath() {
     const value = getParameter("next");
     if (!value) return null;
